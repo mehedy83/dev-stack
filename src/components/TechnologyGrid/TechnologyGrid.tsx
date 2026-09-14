@@ -3,9 +3,15 @@ import TechnologyCard from "../TechnologyCard/TechnologyCard";
 
 interface TechnologyGridProps {
   technologies: Technology[];
+  onAddToStack: (technology: Technology) => void;
+  stack: Technology[];
 }
 
-const TechnologyGrid = ({ technologies }: TechnologyGridProps) => {
+const TechnologyGrid = ({
+  technologies,
+  onAddToStack,
+  stack,
+}: TechnologyGridProps) => {
   return (
     <section className="bg-white px-5 py-0 md:px-8">
       <div className="mx-auto max-w-7xl">
@@ -28,15 +34,22 @@ const TechnologyGrid = ({ technologies }: TechnologyGridProps) => {
 
         
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {technologies.map((technology) => (
-            <TechnologyCard
-              key={technology.id}
-              technology={technology}
-            />
-          ))}
-        </div>
+  {technologies.map((technology) => {
+    const isSelected = stack.some(
+      (item) => item.id === technology.id
+    );
 
-      </div>
+    return (
+      <TechnologyCard
+        key={technology.id}
+        technology={technology}
+        onAddToStack={onAddToStack}
+        isSelected={isSelected}
+      />
+    );
+  })}
+</div>
+</div>
     </section>
   );
 };

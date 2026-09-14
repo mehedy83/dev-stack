@@ -2,9 +2,16 @@ import type { Technology } from "../../types/technology";
 
 interface TechnologyCardProps {
   technology: Technology;
+  onAddToStack: (technology: Technology) => void;
+  isSelected: boolean;
 }
 
-const TechnologyCard = ({ technology }: TechnologyCardProps) => {
+const TechnologyCard = ({
+  technology,
+  onAddToStack,
+  isSelected,
+}: TechnologyCardProps) => {
+    
   return (
     <article className="flex min-h-67.5 flex-col rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition hover:shadow-md">
       
@@ -48,8 +55,11 @@ const TechnologyCard = ({ technology }: TechnologyCardProps) => {
         </div>
 
         
-        <button className="mt-3 w-full rounded-md bg-slate-950 py-2 text-xs font-medium text-white transition hover:bg-slate-800">
-          Add to Stack
+        <button 
+          className="mt-3 w-full rounded-md bg-slate-950 py-2 text-xs font-medium text-white transition hover:bg-slate-800"
+          onClick={() => onAddToStack(technology)}
+        >
+          {isSelected ? "Added to Stack ✓" : "Add to Stack"}
         </button>
       </div>
     </article>

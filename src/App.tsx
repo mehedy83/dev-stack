@@ -8,7 +8,18 @@ import technologiesData from "./data/technologies.json";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [stack, setStack] = useState<Technology[]>([]);
   const [loading, setLoading] = useState(true);
+
+const handleAddToStack = (technology: Technology) => {
+  setStack((currentStack) => {
+    if (currentStack.some((item) => item.id === technology.id)) {
+      return currentStack;
+    }
+
+    return [...currentStack, technology];
+  });
+};
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,10 +41,12 @@ function App() {
       </div>
     ) : (
       <div className="grid items-start gap-6 bg-white px-5 py-10 lg:grid-cols-[1fr_320px] lg:px-8">
-        <TechnologyGrid technologies={technologies} />
-        <div className="lg:mt-24">
-           <YourStack />
-        </div>
+        <TechnologyGrid
+         technologies={technologies}
+          onAddToStack={handleAddToStack}
+          stack={stack}
+        />
+        <YourStack />
       </div>
     )}
   </>
