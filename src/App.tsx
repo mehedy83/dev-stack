@@ -5,7 +5,9 @@ import TechnologyGrid from "./components/TechnologyGrid/TechnologyGrid";
 import YourStack from "./components/YourStack/YourStack";
 import type { Technology } from "./types/technology";
 import { ToastContainer, toast } from "react-toastify";
+import LoadingSkeleton from "./components/LoadingSkeleton/LoadingSkeleton";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer/Footer";
 import technologiesData from "./data/technologies.json";
 
 function App() {
@@ -72,12 +74,8 @@ const handleRemoveFromStack = (technologyId: string) => {
     <Hero />
 
     {loading ? (
-      <div className="flex min-h-40 items-center justify-center">
-        <p className="text-sm text-slate-400">
-          Loading technologies...
-        </p>
-      </div>
-    ) : (
+  <LoadingSkeleton />
+) : (
       <div className="grid items-start gap-6 bg-white px-5 py-10 lg:grid-cols-[1fr_320px] lg:px-8">
         <TechnologyGrid
          technologies={technologies}
@@ -91,6 +89,7 @@ const handleRemoveFromStack = (technologyId: string) => {
       />
       </div>
     )}
+  
       <ToastContainer
        position="top-right"
       autoClose={2000}
@@ -100,6 +99,7 @@ const handleRemoveFromStack = (technologyId: string) => {
      pauseOnHover
      theme="light"
     />
+    <Footer />
   </>
 );
 }
