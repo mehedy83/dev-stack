@@ -3,9 +3,10 @@ import type { Technology } from "../../types/technology";
 interface YourStackProps {
   stack: Technology[];
   onClearStack: () => void;
+  onRemoveFromStack: (technologyId: string) => void;
 }
 
-const YourStack = ({ stack, onClearStack }: YourStackProps) => {
+const YourStack = ({ stack, onClearStack, onRemoveFromStack }: YourStackProps) => {
   return (
     <aside className="rounded-xl border border-slate-100 bg-white p-5 shadow-sm lg:sticky lg:top-24 lg:self-start">
       
@@ -57,13 +58,17 @@ const YourStack = ({ stack, onClearStack }: YourStackProps) => {
               {technology.category}
             </p>
           </div>
+          <button
+                onClick={() => onRemoveFromStack(technology.id)}
+                className="ml-auto text-xs font-medium text-red-500 hover:text-red-700">
+                Remove
+            </button>
         </div>
       ))}
     </div>
   )}
 </div>
 
-     
       <button
         onClick={onClearStack}
         className="w-full rounded-md border border-slate-200 py-2 text-xs font-medium text-slate-300"

@@ -55,12 +55,13 @@ const TechnologyCard = ({
         </div>
 
         
-        <button 
-          className="mt-3 w-full rounded-md bg-slate-950 py-2 text-xs font-medium text-white transition hover:bg-slate-800"
-          onClick={() => onAddToStack(technology)}
-        >
-          {isSelected ? "Added to Stack ✓" : "Add to Stack"}
-        </button>
+        <button
+         disabled={isSelected}
+         className="mt-3 w-full rounded-md bg-slate-950 py-2 text-xs font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+         onClick={() => onAddToStack(technology)}
+>
+      {isSelected ? "✓ Added to Stack" : "Add to Stack"}
+</button>
       </div>
     </article>
   );
