@@ -53,12 +53,12 @@ const Navbar = () => {
             Sign In
           </button>
 
-          <button className="rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90">
+          <button className="rounded-full bg-linear-to-r from-orange-500 via-pink-500 to-violet-500 px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90">
             Sign Up
           </button>
         </div>
       </div>
-      
+
       {isMenuOpen && (
         <div className="border-t border-gray-100 bg-white px-5 py-4 md:hidden">
           <div className="flex flex-col gap-4">
