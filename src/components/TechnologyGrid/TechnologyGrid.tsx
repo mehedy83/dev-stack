@@ -7,7 +7,7 @@ interface TechnologyGridProps {
 
 const TechnologyGrid = ({ technologies }: TechnologyGridProps) => {
   return (
-    <section className="bg-white px-5 py-16 md:px-8">
+    <section className="bg-white px-5 py-0 md:px-8">
       <div className="mx-auto max-w-7xl">
 
         <div className="mb-8">
