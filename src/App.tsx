@@ -21,6 +21,10 @@ const handleAddToStack = (technology: Technology) => {
   });
 };
 
+const handleClearStack = () => {
+  setStack([]);
+};
+
   useEffect(() => {
     setTimeout(() => {
       setTechnologies(technologiesData);
@@ -46,7 +50,10 @@ const handleAddToStack = (technology: Technology) => {
           onAddToStack={handleAddToStack}
           stack={stack}
         />
-        <YourStack />
+        <YourStack
+        stack={stack}
+        onClearStack={handleClearStack}
+      />
       </div>
     )}
   </>
